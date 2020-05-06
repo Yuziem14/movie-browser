@@ -1,11 +1,9 @@
 {
   "expo": {
-    "name": "project2",
+    "name": "Movie Browser",
     "description": "This project is really great.",
-    "slug": "project2",
-    "privacy": "public",
-    "sdkVersion": "25.0.0",
-    "platforms": ["ios", "android"],
+    "slug": "movie-browser",
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,6 +12,10 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     }
