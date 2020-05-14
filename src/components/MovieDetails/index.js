@@ -3,12 +3,13 @@ import { View, ScrollView, Text, Image, ImageBackground } from 'react-native';
 import PropTypes from 'prop-types';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import { movie as mock } from '../../../mockData';
+import noPoster from '../../assets/poster_placeholder.png';
 
 import styles from './styles';
 
 function MovieDetails({ movie }) {
-  const isApproved = Number(mock.imdbRating) >= 7.0;
+  const poster = movie.Poster === 'N/A' ? noPoster : { uri: movie.Poster };
+  const isApproved = Number(movie.imdbRating) || 0 >= 7.0;
 
   const ratingColor = isApproved ? '#2ECC71' : '#E74C3C';
   const ratingIcon = isApproved ? 'thumb-up' : 'thumb-down';
@@ -17,53 +18,59 @@ function MovieDetails({ movie }) {
     <View style={styles.container}>
       <ScrollView>
         <ImageBackground
-          source={{ uri: movie.Poster }}
+          source={poster}
           blurRadius={5.5}
           style={styles.posterSection}
         >
           <View style={styles.posterWrapper}>
-            <Image source={{ uri: movie.Poster }} style={styles.poster} />
+            <Image source={poster} style={styles.poster} />
           </View>
         </ImageBackground>
 
         <View style={styles.infoSection}>
           <View style={styles.infoHeader}>
             <Text style={styles.headerText}>{movie.Title}</Text>
-            <Text style={styles.headerText}>{mock.Released}</Text>
+            <Text style={styles.headerText}>{movie.Released}</Text>
 
-            <View style={styles.rating}>
-              <MaterialIcons name={ratingIcon} color={ratingColor} size={28} />
-              <Text style={[styles.ratingText, { color: ratingColor }]}>
-                {mock.imdbRating}
-              </Text>
-            </View>
+            {movie.imdbRating && (
+              <View style={styles.rating}>
+                <MaterialIcons
+                  name={ratingIcon}
+                  color={ratingColor}
+                  size={28}
+                />
+                <Text style={[styles.ratingText, { color: ratingColor }]}>
+                  {movie.imdbRating}
+                </Text>
+              </View>
+            )}
           </View>
 
           <View style={styles.body}>
-            <Text style={[styles.bodyText, styles.plotText]}>{mock.Plot}</Text>
+            <Text style={[styles.bodyText, styles.plotText]}>{movie.Plot}</Text>
             <Text style={styles.bodyText}>
               <Text style={styles.describeText}>Runtime: </Text>
-              {mock.Runtime}
+              {movie.Runtime}
             </Text>
             <Text style={styles.bodyText}>
               <Text style={styles.describeText}>Genre: </Text>
-              {mock.Genre}
+              {movie.Genre}
             </Text>
             <Text style={styles.bodyText}>
               <Text style={styles.describeText}>Casting: </Text>
-              {mock.Actors}
+              {movie.Actors}
             </Text>
             <Text style={styles.bodyText}>
               <Text style={styles.describeText}>Director: </Text>
-              {mock.Director}
+              {movie.Director}
             </Text>
             <Text style={styles.bodyText}>
               <Text style={styles.describeText}>Writer: </Text>
-              {mock.Writer}
+              {movie.Writer}
             </Text>
             <Text style={styles.bodyText}>
               <Text style={styles.describeText}>Country: </Text>
-              {mock.Country}
+              {movie.Country}
             </Text>
           </View>
         </View>

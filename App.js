@@ -1,17 +1,31 @@
 import React from 'react';
-import Routes from './src/routes';
+import { Alert } from 'react-native';
 
-import { search } from './mockData';
+import { requestMovieById } from './src/services/movies';
+import Routes from './src/routes';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      movies: search.Search,
-      search: search.Search,
+      movies: [],
+      search: [],
     };
   }
+
+  handleSelectMovie = async (id, navigation) => {
+    try {
+      const movie = await requestMovieById(id);
+      navigation.push('MovieDetails', { movie });
+    } catch (error) {
+      console.warn(error);
+      Alert.alert(
+        'Whoops!',
+        'Not possible to get some movies now, sorry. Try Another time.'
+      );
+    }
+  };
 
   setMovies = (key, movies) => {
     this.setState((prevState) => ({ ...prevState, [key]: movies }));
@@ -24,6 +38,7 @@ export default class App extends React.Component {
           movies: this.state.movies,
           search: this.state.search,
           setMovies: this.setMovies,
+          handleSelectMovie: this.handleSelectMovie,
         }}
       />
     );

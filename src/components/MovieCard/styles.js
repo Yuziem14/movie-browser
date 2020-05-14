@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     height: 212,
     borderRadius: 8,
     elevation: 8,
+    backgroundColor: '#f4f4f4',
   },
 
   poster: {

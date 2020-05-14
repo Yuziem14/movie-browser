@@ -9,6 +9,10 @@ class LoadingScreen extends React.Component {
     this.state = { isLoaded: false };
   }
 
+  static propTypes = {
+    navigation: PropTypes.object.isRequired,
+  };
+
   async _loadFonts() {
     const fonts = {
       Montserrat: require('../assets/fonts/Montserrat-Regular.ttf'),
@@ -42,10 +46,6 @@ class LoadingScreen extends React.Component {
     );
   }
 }
-
-LoadingScreen.propTypes = {
-  navigation: PropTypes.object.isRequired,
-};
 
 const styles = StyleSheet.create({
   container: {

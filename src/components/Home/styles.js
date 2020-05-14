@@ -10,6 +10,22 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
 
+  refreshSection: {
+    alignSelf: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
+  },
+
+  refreshText: {
+    fontFamily: 'Montserrat-Italic',
+    fontSize: 18,
+    color: '#333',
+    marginBottom: 5,
+    marginRight: 5,
+  },
+
   listTitle: {
     fontFamily: 'Montserrat',
     fontSize: 20,

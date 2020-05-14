@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Home from '../components/Home';
 
 function HomeScreen({ navigation, screenProps }) {
-  function handleSelectMovie(movie) {
-    navigation.push('MovieDetails', { movie });
+  async function handleSelectMovie(id) {
+    await screenProps.handleSelectMovie(id, navigation);
   }
 
   return (

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Search from '../components/Search';
 
 function SearchScreen({ navigation, screenProps }) {
-  function handleSelectMovie(movie) {
-    navigation.push('MovieDetails', { movie });
+  async function handleSelectMovie(id) {
+    await screenProps.handleSelectMovie(id, navigation);
   }
 
   return (

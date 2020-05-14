@@ -18,7 +18,7 @@ function MovieList({ movies, handleSelectMovie }) {
         renderItem={renderItem}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        keyExtractor={(movie) => movie.imdbID}
+        keyExtractor={(movie, index) => String(index)}
       />
     </View>
   );

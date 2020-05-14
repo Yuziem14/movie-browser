@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Italic',
     fontSize: 18,
     textAlign: 'justify',
-    marginVertical: 0,
+    marginTop: 0,
+    marginBottom: 15,
   },
 
   rating: {
